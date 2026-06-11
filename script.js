@@ -1,5 +1,5 @@
-import axios from "https://cdn.jsdelivr.net/npm/axios@1.7.9/+esm";
-import { API_KEY } from "./keys.js";
+import { renderGallery } from "./dom.js";
+import { axios, API_KEY } from "./api.js";
 
 
 
@@ -16,38 +16,19 @@ async function fetchData() {
 
         const data = response.data;
         console.log("API Returned this raw data structure:", data);
-
-        const imageElement = document.getElementById("ArtistPiece");
-
-    if (data && data.artworks && data.artworks.length > 0) {
-           const gallery = document.getElementById("gallery-container");
-           gallery.innerHTML = "";
-
-            data.artworks.forEach(art =>{
-                const img = document.createElement("img");
-                img.src = art.image;
-                img.alt = "Art Piece";
-                img.loading = "eager"
-                img.style.width = "200px";
-                gallery.appendChild(img);
-            });
-
-            console.log(`Image rendered ${data.artworks.length} images.`);
-    } else {
-            gallery.innerHTML= "<p>No artwork found matching that name</p>";
-        }
+        renderGallery(data);
     } catch (error) {
 
-        if (error.response){
+        if (error.response) {
             console.log("error status:", error.response.status);
-        } else{
+        } else {
             console.log("Something went wrong", error.message);
         }
 
-        }
-    };
+    }
+};
 const searchBtn = document.getElementById("search-btn");
-if(searchBtn){
+if (searchBtn) {
     searchBtn.addEventListener("click", fetchData);
     console.log("Event Listener attached to search-btn.");
 };
