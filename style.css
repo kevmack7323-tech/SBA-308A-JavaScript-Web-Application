@@ -28,3 +28,7 @@
     cursor: pointer;
 }
 
+#search-btn:hover{
+    background-color: powderblue;
+    color: red;
+}
