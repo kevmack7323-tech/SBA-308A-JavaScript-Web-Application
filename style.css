@@ -8,3 +8,23 @@
 #gallery-container img:hover{
     transform: scale(1.075);
 }
+
+#artSearch{
+    padding: 10px;
+    font-size: 16px;
+    border: 3px solid red;
+    background-color: powderblue;
+    border-radius: 30px;
+    width: 250px;
+}
+
+#search-btn{
+    padding: 10px;
+    font-size: 16px;
+    background-color: lightgrey;
+    border-radius: 30px;
+    width: 125px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
